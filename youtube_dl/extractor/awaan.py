@@ -25,14 +25,14 @@ class AWAANIE(InfoExtractor):
         show_id, video_id, season_id = re.match(self._VALID_URL, url).groups()
         if video_id and int(video_id) > 0:
             return self.url_result(
-                'http://awaan.ae/media/%s' % video_id, 'AWAANVideo')
+                'http://awaan.ae/video/%s' % video_id, 'AWAANVideo')
         elif season_id and int(season_id) > 0:
             return self.url_result(smuggle_url(
-                'http://awaan.ae/program/season/%s' % season_id,
+                'http://awaan.ae/show/season/%s' % season_id,
                 {'show_id': show_id}), 'AWAANSeason')
         else:
             return self.url_result(
-                'http://awaan.ae/program/%s' % show_id, 'AWAANSeason')
+                'http://awaan.ae/show/%s' % show_id, 'AWAANSeason')
 
 
 class AWAANBaseIE(InfoExtractor):
